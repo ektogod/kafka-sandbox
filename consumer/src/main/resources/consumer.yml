@@ -1,0 +1,10 @@
+app:
+  kafka:
+    bootstrapServers: localhost:9092 #брокер, к которому подключаемся
+    groupId: consumer-group-1   #айди группы потребителей
+    enableAutoCommit: false  #нужно ли вручную подтверждать получение сообщения
+    concurrency: 1 # колво потоков обработчиков
+    maxPollRecords: 500 # макс колво извлекаемых сообщений за раз
+
+server:
+  port: 8190

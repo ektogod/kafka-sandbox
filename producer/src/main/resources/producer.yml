@@ -1,0 +1,10 @@
+app:
+  kafka:
+    bootstrap-servers: localhost:9092
+    client-id: updates-tracker
+    delivery-timeout: 60s
+    linger-ms: 12_000
+    batch-size: 100_000
+
+server:
+  port: 8080
