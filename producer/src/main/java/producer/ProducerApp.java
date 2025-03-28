@@ -1,12 +1,14 @@
 package producer;
 
+import database.DatabaseApp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import producer.websocket.WebSocketClient;
 
 import java.util.Collections;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class ProducerApp {
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(ProducerApp.class);

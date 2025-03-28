@@ -10,7 +10,7 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
 @Configuration
-@PropertySource("classpath:producer.yml")
+@PropertySource("classpath:database.yml")
 @Getter
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Value("${app.websocket.subscribe_link}")

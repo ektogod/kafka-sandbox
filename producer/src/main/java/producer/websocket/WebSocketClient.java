@@ -8,7 +8,6 @@ import okhttp3.Request;
 import okhttp3.WebSocket;
 import org.springframework.stereotype.Component;
 import producer.config.WebSocketConfig;
-import producer.websocket.KafkaWebSocketListener;
 
 @Component
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)

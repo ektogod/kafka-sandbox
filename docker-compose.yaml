@@ -31,6 +31,25 @@ services:
     depends_on:
       - zookeeper
 
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'messages'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: '1234'
+      MYSQL_ROOT_PASSWORD: 'qwerty'
+    ports:
+      - '3306:3306'
+
+  flyway:
+    image: flyway/flyway
+    command: -url=jdbc:mysql://mysql:3306/messages?allowPublicKeyRetrieval=true -user=user -password=1234 -locations=filesystem:/flyway/sql migrate
+    depends_on:
+      - mysql
+    volumes:
+      - ./flyway/sql:/flyway/sql
+
 networks:
   kafka_network:
     driver: bridge

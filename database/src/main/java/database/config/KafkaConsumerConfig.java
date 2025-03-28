@@ -1,7 +1,6 @@
-package consumer.config;
+package database.config;
 
-import consumer.dto.Kafka;
-import consumer.dto.Message;
+import database.dto.Kafka;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
