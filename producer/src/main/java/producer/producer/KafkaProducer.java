@@ -1,5 +1,6 @@
-package producer;
+package producer.producer;
 
+import producer.dto.CryptMessage;
 import producer.dto.Message;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -11,9 +12,9 @@ import org.springframework.stereotype.Component;
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
 public class KafkaProducer {
-    KafkaTemplate<String, Message> template;
+    KafkaTemplate<String, CryptMessage> template;
 
-    public void sendMessage(Message message){
+    public void sendMessage(CryptMessage message){
         template.send("messages.topic", message);
     }
 }

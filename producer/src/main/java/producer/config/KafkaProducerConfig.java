@@ -5,6 +5,7 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.support.serializer.JsonSerializer;
+import producer.dto.CryptMessage;
 import producer.dto.Kafka;
 import producer.dto.Message;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -21,13 +22,11 @@ import java.util.Map;
 @Configuration
 @RequiredArgsConstructor
 @EnableConfigurationProperties(Kafka.class)
-//@PropertySource("classpath:producer.yml")
-/*@ConfigurationProperties(prefix = "app.kafka", ignoreUnknownFields = false)*/
 public class KafkaProducerConfig {
     private final Kafka kafka;
 
     @Bean
-    ProducerFactory<String, Message> producerFactory() {
+    ProducerFactory<String, CryptMessage> producerFactory() {
         return new DefaultKafkaProducerFactory<>(
                 Map.of(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafka.bootstrapServers(),
                         ProducerConfig.CLIENT_ID_CONFIG, kafka.clientId(),
@@ -39,7 +38,7 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    KafkaTemplate<String, Message> kafkaTemplate(ProducerFactory<String, Message> producerFactory){
+    KafkaTemplate<String, CryptMessage> kafkaTemplate(ProducerFactory<String, CryptMessage> producerFactory){
         return new KafkaTemplate<>(producerFactory);
     }
 }

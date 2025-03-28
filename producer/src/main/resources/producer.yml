@@ -5,6 +5,8 @@ app:
     delivery-timeout: 60s
     linger-ms: 12_000
     batch-size: 100_000
+  websocket:
+    subscribe_link: wss://ws-feed.exchange.coinbase.com #wss://ws-direct.exchange.coinbase.com
 
 server:
   port: 8080

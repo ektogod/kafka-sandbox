@@ -2,9 +2,7 @@ package producer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import producer.dto.Message;
+import producer.websocket.WebSocketClient;
 
 import java.util.Collections;
 
@@ -17,7 +15,8 @@ public class ProducerApp {
         ));
 
         var context = app.run(args);
-        KafkaProducer app1 = context.getBean(KafkaProducer.class);
-        app1.sendMessage(new Message("msg", "msg from Lera", "Lera", 20));
+
+        WebSocketClient client = context.getBean(WebSocketClient.class);
+        client.activateClient();
     }
 }
